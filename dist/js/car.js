@@ -1,0 +1,1 @@
+$(function(){$("#top").load("top.html",function(){$("#magic").remove(),$("#nav").remove()}),$("#bottom").load("bottom.html",function(){$("#index-boto").remove()})});

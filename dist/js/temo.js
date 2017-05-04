@@ -1,0 +1,1 @@
+define(["jquery","template"],function(n,i){var p=i.compile(n("#link").html());n.getJSON("../php/listing.php",function(i){i.forEach(function(i){var t=p(i);n("#shoplist").append(t)})})});

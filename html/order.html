@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>填写订单</title>
+	<link rel="stylesheet" type="text/css" href="../dist/css/common.css">
+	<link rel="stylesheet" type="text/css" href="../dist/css/order.css">
+	<script type="text/javascript"  src='../dist/js/jquery.min.js'></script>
+	<script type="text/javascript" src='../dist/js/order.js'></script>
+</head>
+<body>
+	<div id="top"></div>
+	<div class="main">
+		<img src="../img/order/process02.gif">
+	</div>
+	<div class="main" id="order">
+	    <div class="order_top">填写并核对订单信息</div>
+		<div id="addressa">
+			<p class="add_tit"> 收货人信息</p>
+			<div class="shrAddress_box">
+				<table class="shrAddress_editor" width="100%">
+	               <colgroup>
+	                 <col width="70px" />
+	               </colgroup>
+	                <tr>
+	                   <th><span>*</span>收&nbsp; 货 人：</th>
+	                    <td>
+	                     <input id="address_id" name="address_id" type="hidden" value="">
+	                      <input id="name" name="name" type="text" value="" maxlength="20" slength="1" onblur="return anonCheckName();" />
+	                     <span class="pub_errorMsg name_text"></span>
+	                     </td>
+	                    </tr>
+					 <tr>
+	                    <th><span>*</span>地 &nbsp; 　区：</th>
+	                     <td>
+	                       <select name="address_area1" id="address_area1" onchange="getArea(this.value,'2','','');">
+	                       <option value="">--请选择--</option>
+	                       <option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北</option><option value="140000">山西</option><option value="150000">内蒙古</option><option value="210000">辽宁</option><option value="220000">吉林</option><option value="230000">黑龙江</option><option value="310000">上海市</option><option value="320000">江苏</option><option value="330000">浙江</option><option value="340000">安徽</option><option value="350000">福建</option><option value="360000">江西</option><option value="370000">山东</option><option value="410000">河南</option><option value="420000">湖北</option><option value="430000">湖南</option><option value="440000">广东</option><option value="450000">广西</option><option value="460000">海南</option><option value="500000">重庆市</option><option value="510000">四川</option><option value="520000">贵州</option><option value="530000">云南</option><option value="540000">西藏</option><option value="610000">陕西</option><option value="620000">甘肃</option><option value="630000">青海</option><option value="640000">宁夏</option><option value="650000">新疆</option><option value="710000">台湾</option><option value="810000">香港</option><option value="820000">澳门</option><option value="900000">海外</option></select>
+	                        <select name="address_area2" id="address_area2" style="width:100px;" onchange="getArea(this.value,'3','','');">
+	                          <option>--请选择--</option>
+	                        </select>
+	                        <select name="address_area3" id="address_area3" style="width:100px;">
+	                         <option>--请选择--</option>
+	                          </select>
+	                         <span class="pub_errorMsg address_area_text"></span>
+	                         </td>
+	                       </tr>
+	                  <tr>
+	                  <th><span>*</span>收货地址：</th>
+	                   <td>
+	                   <input class="shr_dz" type="text" id="address" name="address" value="" onblur="return anonCheckAddres();" />
+	                     <span class="pub_errorMsg address_text"></span>                       </td>
+	                  </tr>
+	                   <tr>
+	                   <th><span>*</span>手机号码：</th>
+	                   <td>
+	                    <input type="text" id="mobile" name="mobile" value="" onblur="return anonCheckMobile();" />
+	                   <span class="pub_errorMsg mobile_text"></span>
+	                     </td>
+	                   </tr>
+	                    <tr>
+	                    <th><span> </span>固定电话：</th>
+	                     <td><input type="text" id="phone" name="phone"  value="" /></td>
+	                     </tr>
+				         <tr>
+	                     <th></th>
+	                   <td>
+	                   <a class="shrAddress_editor_save ses_m" href="javascript:void(0);" onclick="addAdress(0);">保存地址</a>
+	                                            
+	                   </td>
+	                 </tr>
+	          	</table>
+     		 </div>
+			<div id="gifttip">
+				<input id="is_bill" name="is_bill" class="check_radio" type="checkbox" value="1"  /><label for="is_bill">此订单作为礼品赠送他人</label>
+							<span class="tip" onmousemove="tipsShow('<b>温馨提醒：</b><ul><li>收货人：用于接收所购置商品的联系人信息。</li><li>购货人：用于接收该商品相关票据和短信提醒的联系人信息。</li>')">（?）</span>
+
+			</div>
+			<div class="shrAddress_box_bill">
+                        	<p>购货人手机：<input id="purchaseMobile" name="purchaseMobile" value="" type="text" /><input id="purchaseMobile1" name="purchaseMobile1" type="hidden"><button class="ghr_btn" type="button" onclick="return checkMobile();">确认</button><a class="ghr_xg" href="javascript:void(0);">修改</a><span class="checkMobileMsg" style="color:#8e0c3a; margin-left:5px; display:none;"></span></p>
+                            <p style="color:#ccc;">*我们的时尚购物顾问将会联系此号码。</p>
+			</div>
+			<div id="pay">
+				<p class="add_tit"> 支付方式</p>
+				<div class="orderbox_tit02">支付方式</div>
+                <ul>
+	              <li><label for="pay_01">
+					<span><input class="pay_int pay_val" id="pay_01" type="radio" name="payWay" value="0102" />在线支付</span>
+					<span>支持多家银行借记卡、信用卡支付。支付宝支付，微信等多种支付平台；支持美西礼品卡支付。</span></label>
+					</li>
+				<li><label for="pay_00">
+					<span><input class="pay_int pay_val" id="pay_00" type="radio" name="payWay" value="1701" />快捷支付</span>
+					<span>不需开通网银，即可完成支付。</span><a href="/services/PaymentInstructions.html?forOrder" target="_blank" style="color:#8e0c3a;">查看支持银行卡</a>	</label>
+					</li>
+
+                </ul>
+			</div>
+			<div id="distribution">
+				<p class="add_tit"> 支付方式</p>
+				<div class="orderbox_tit02">支付方式</div>
+				<ul class="order_pay_box_m">
+					<li class="pay_cur">
+					<label for="time_01">
+					<div>
+						<span><input class="pay_ints" id="time_01" type="radio" name="deliveryTime" value="0" />所有日期均可收货</span>
+					</div>
+					</label>
+					</li>
+					<li>
+					<label for="time_02">
+					<div>
+						<span><input class="pay_ints" id="time_02" type="radio" name="deliveryTime" value="1" />仅工作日收货</span>
+					</div>
+					</label>
+					</li>
+					<li>
+						<label for="time_03">
+						<div>
+						<span><input class="pay_ints" id="time_03" type="radio" name="deliveryTime" value="2" />仅双休日，节假日收货</span>
+						</div>
+						</label>
+					</li>
+				</ul>
+				<p class="time_tips">温馨提示：我们会努力按照您指定的时间配送，但因天气、交通等各类因素影响，您的订单有可能会有延误现象。</p>
+				<div class="orderbox_tit02">配送方式：快递公司</div>
+			</div>
+			<div id="packing">
+				<p class="add_tit">包装方式</p>
+				<ul class="order_pay_box_m">
+							<li class="pay_cur packnow">
+								<label for="packaging_01">
+									<div>
+										<span><input class="pay_intp" id="packaging_01" type="radio" name="pack" value="1" checked="checked" />美西标准包装（免费，环保普通包装内放置我们白色美西盒子，更加坚固的保护您的货品）</span>
+									</div>
+									<div class="pay_box_info"><img src="../img/order/pic_pack01.jpg" /></div>
+								</label>
+							</li>
+							<li>
+								<label for="packaging_02">
+									<div>
+										<span><input class="pay_intp" id="packaging_02" type="radio" name="pack" value="3" />环保普通包装（免费，如果您有太多的美西盒子，可以选择更环保的普通包装）</span>
+									</div>
+									<div class="pay_box_info"><img src="../img/order/pic_pack02.jpg" /></div>
+								</label>
+							</li>
+							<li>
+								<label for="packaging_03">
+									<div >
+										<span><input class="pay_intp" id="packaging_03" type="radio" name="pack" value="2" />美西礼品包装（10元，高档的礼品包装，让您的礼物更出众）</span>
+									</div>
+									<div class="pay_box_info"><img src="../img/order/pic_pack03.jpg" /></div>
+								</label>
+							</li>
+						</ul>
+						<div class="pay_consultant">
+						<table width="100%">
+							<tr>
+								<th><span class="c_purple">购物顾问：</span></th>
+								<td>
+									<select id="" name="shopping_assistant" onchange="" ondblclick="" class="" datatype="" errmsg="" ><option value="" >-不指定购物顾问-</option><option value="159">Joyce</option><option value="294">amber.jing</option><option value="277">maggie.wang</option><option value="285">lisa.li</option><option value="215">kuma</option><option value="80">Kiro</option><option value="87">Chloe</option><option value="264">nash.sun</option><option value="170">Vurtne</option></select></select>
+									<span class="tip" onmousemove="tipsShow('<ul><li>购物顾问是美西时尚为更好地服务您安排的专业导购人员。</li><li>选择不指定将由系统为您分配一位购物顾问。</li>')">（?）</span>
+								</td>
+							</tr>
+							<tr>
+								<th style="padding-top:4px;">特殊要求：</th>
+								<td>
+									<textarea class="pay_note" name="memo" id="memo">您可在此输入特殊要求...</textarea>
+								</td>
+							</tr>
+						</table>
+					</div>
+			</div>
+			<div id="orders">
+				<p class="add_tit"> 商品清单</p>
+				<table  class="ordertabla">
+				<colgroup>
+					<col width="100px"><col width=""><col width="150px"><col width="100px"><col width="100px">
+				</colgroup>
+				<tbody><tr>
+					<th>商品图片</th><th>商品名称</th><th>单价</th><th>数量</th><th>小计</th>
+					</tr>
+						<tr id="c_">
+							<td>
+							<a href="/product/detail/id/126603/saleid/124061.html" onclick="proClick('126603,ABRAHAM K HANGUL  呢绒混纺 女士 连衣裙,服装,ABRAHAM K HANGUL,白色,1,订单提交');" target="_blank">
+								<img src="http://img.meicicdn.com/p/127/126603/s-126603-1.jpg" width="50" height="60" alt="ABRAHAM K HANGUL  呢绒混纺 女士 连衣裙"></a>
+							</td>
+							<td class="cart_pro_name">
+								<a href="/product/detail/id/126603/saleid/124061.html" onclick="proClick('126603,ABRAHAM K HANGUL  呢绒混纺 女士 连衣裙,服装,ABRAHAM K HANGUL,白色,1,订单提交');" target="_blank">ABRAHAM K HANGUL  呢绒混纺 女士 连衣裙 <br>尺码：S</a>
+							</td>
+							<td>￥1310.00</td>
+							<td>1</td>
+							<td>￥1310.00</td>	</tr>	
+							</tbody>
+					</table>
+					<p  class="dyuse dybtn1" >使用优惠券（<span>0</span>）<img class="dytb"  src="../img/order/youjt.png"></p>
+					<table width="100%">
+									<colgroup>
+										<col width="75px" />
+									</colgroup>
+									<tr>
+										<!--<th>优惠券代码：</th>-->
+										<td>
+											<input class="order_coupons_int" type="text" value="" id="YHJVALUE" />
+											<button class="order_coupons_btn" type="button" >使用优惠券</button>
+										</td>
+									</tr>
+					</table>
+					<table class="renum" >
+									<colgroup>
+										<col width="150px" />
+									</colgroup>
+									<tr>
+										<th>合　　计：</th><td>￥1310.00</td>
+									</tr>
+									<tr>
+										<th class="relative">运　　费：<p class="order_yf" onmouseenter="ga('send', 'event','orderFlow', 'order','couponRule');"></p></th>
+										<td class="c_gray_3">￥<font id="YF">0.00</font></td>
+									</tr>
+									<tr style="display:none;">
+										<th>手 续 费：</th><td class="c_gray_3">￥<font id="SXF">0.00</font></td>
+									</tr>
+									<tr>
+										<th>包　　装：</th><td class="c_gray_3">￥<font id="BG">0.00</font></td>
+									</tr>
+									<tr>
+										<th style="letter-spacing:5.5px;">优惠券:</th><td class="c_gray_3"><span class="fuhao" style="display:none;">-</span>￥<font id="YHJ">0.00</font><input type="hidden" name="yhjCode" id="yhjCode"></td>
+									</tr>
+										<th>礼品卡预付：</th><td>-￥<font id="giftpayAcount">0</font></td>
+									</tr>
+																		<tr>
+										<th>总　　计：</th><td style="color:#bb0c0c;">￥<span class="orderTotal">1310.00</span></td>
+									</tr>
+						</table>
+								
+					<div class="clear"></div>
+
+			</div>
+					<input type="button" id="orderbu">
+					<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<div id="bottom"></div>
+</body>
+</html>

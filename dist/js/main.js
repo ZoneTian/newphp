@@ -1,0 +1,1 @@
+require.config({paths:{jquery:"jquery.min",bootstrap:"bootstrap.min",index:"index"}}),require(["jquery"],function(o){require(["bootstrap","index"],function(e,n){console.log(e),console.log(o),console.log(n)})});

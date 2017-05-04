@@ -1,0 +1,1 @@
+$(function(){$("#top").load("top.html",function(){$("#magic").remove(),$("#aside").remove()}),$("#bottom").load("bottom.html")});

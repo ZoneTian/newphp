@@ -1,0 +1,1 @@
+$(function(){$("#top").load("top.html"),$("#bottom").load("bottom.html");var t=template.compile($("#link").html());$.getJSON("../php/odd.php",function(o){o.forEach(function(o){var p=t(o);$("#shoplist").append(p)})})});
